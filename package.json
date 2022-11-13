@@ -1,0 +1,48 @@
+{
+  "name": "seleniumjstesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thuongle24/SeleniumJSTesting.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "acceptance-test": "./node_modules/.bin/cucumber-js --profile acceptance test/acceptance/step_definitions",
+    "api-test": "./node_modules/.bin/cucumber-js --profile api"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^8.7.0",
+    "chromedriver": "^107.0.3",
+    "config": "^3.3.8",
+    "cookie": "^0.5.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.5",
+    "expect": "^29.3.1",
+    "faker": "^5.5.3",
+    "gherkin-lint": "^4.2.2",
+    "log4js": "^6.7.0",
+    "mocha": "^10.1.0",
+    "rimraf": "^3.0.2",
+    "selenium-webdriver": "^4.6.0",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.0",
+    "@types/faker": "^6.6.9",
+    "@types/jest": "^29.2.2",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "cucumber-junit": "^1.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  }
+}

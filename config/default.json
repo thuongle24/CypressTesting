@@ -1,0 +1,40 @@
+{
+    "baseUrl": "https://int.autoscout24.ch/de",
+    "browser": "chrome",
+    "runBrowserHeadless": true,
+    "defaultCommandTimeout": 30000,
+    "pageLoadTimeout": 90000,
+    "requestTimeout": 60000,
+    "responseTimeout": 60000,
+    "logLevel": "info",
+    "env": {
+      "webAppUrl": "webapp.autoscout24.ch",
+      "apiUrl": "https://int-webapp.autoscout24.ch/dev"
+    },
+    "personas": {
+        "dealer": {
+          "email": "kyc.admin@ripjar.com",
+          "password": ""
+        },
+        "guest": {
+          "email": "kyc.admin@ripjar.com",
+          "password": ""
+        }
+    },
+    "driverTimeout": 5000,
+    "cucumberDefaultTimeout": 100000,
+    "cucumberSetupTimeout": 120000,
+    "retryCount": {
+        "low": 5,
+        "medium": 10,
+        "high": 100
+    },
+    "retryIntervalMs": 1000,
+    "browserDownloadDirectory": "downloads",
+    "parallelism": {
+        "acceptance": 1,
+        "api": 5
+    },
+    "cleanup": true
+  }
+  

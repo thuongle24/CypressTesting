@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": false,
+        "node": true,
+        "es6": true 
+    },
+    "plugins": ["jest", "prettier"],
+    "extends": [ "plugin:jest/recommended", "prettier", "plugin:prettier/recommended"],
+    "ignorePatterns": ["dist"],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "overrides": [
+        {
+          "files": ["**/*.ts"],
+          "extends": [
+            "plugin:jest/recommended",
+            "prettier",
+            "plugin:prettier/recommended",
+            "plugin:import/typescript",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:@typescript-eslint/eslint-recommended"
+          ],
+          "parser": "@typescript-eslint/parser",
+          "plugins": ["jest", "prettier", "import", "@typescript-eslint"],
+          "rules": {
+            "@typescript-eslint/explicit-function-return-type": [1, { "allowExpressions": true }],
+            "@typescript-eslint/no-explicit-any": 0,
+            "@typescript-eslint/explicit-module-boundary-types": 0,
+            "@typescript-eslint/member-ordering": 2,
+            "no-useless-constructor": 0,
+            "new-cap": 0
+          }
+        }
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
+}
