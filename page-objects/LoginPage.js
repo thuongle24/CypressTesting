@@ -1,8 +1,8 @@
 const PageObject = require("./PageObject");
 
 class LoginPage extends PageObject {
-    constructor(driver) {
-        super(driver);
+    constructor(driver, pageConstructor) {
+        super(driver, pageConstructor);
         this.url = `${this.baseUrl}/account/logon`;
         this.usernameSelector = '#LogOnModel_UserName';
         this.passwordSelector = '#LogOnModel_Password';
@@ -12,6 +12,5 @@ class LoginPage extends PageObject {
     getUrl(){
         return this.url;
     }
-
 }
 module.exports=LoginPage;

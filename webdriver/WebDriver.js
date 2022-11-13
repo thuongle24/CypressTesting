@@ -1,4 +1,4 @@
-import { Builder, By, until, Key } from "selenium-webdriver";
+const webdriver = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const ie = require('selenium-webdriver/ie');
 const config = require("config");
@@ -9,22 +9,15 @@ const { retry } = require("../utils/retry");
 class SeleniumWebdriver {
   async init() {
     const browser = config.get("browser");
-    switch (browser.toLowerCase()) {
-      case "internet explorer":
-        this.driver = await this.initInternetExplorer();
-        break;
-      default:
-        this.driver = await this.initChrome();
-    }
+    this.driver = new webdriver.Builder()
+        .forBrowser(browser)
+        .setChromeOptions(this.chromeOptions)
+        .setIeOptions(this.ieOptions)
+        .build();
     await this.driver.manage().setTimeouts({ implicit: 5000, pageLoad: 30000, script: 15000 });
   }
 
-  async initChrome() {
-    let builder = new Builder().forBrowser("chrome");
-    if (config.has("gridHub")) {
-      builder = builder.usingServer(config.get("gridHub"));
-    }
-
+  async chromeOptions() {
     let options = new chrome.Options();
     if (config.get("runBrowserHeadless")) {
       options = options.headless();
@@ -40,30 +33,26 @@ class SeleniumWebdriver {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("--ignore-certificate-errors");
 
-    builder = builder.setChromeOptions(options);
-
-    return await builder.build();
+    return options;
   }
 
-  async initInternetExplorer() {
-    let builder = new Builder().forBrowser("internet explorer");
+  async ieOptions() {
     let options = new ie.Options();
     options = options.ensureCleanSession(true);
-    builder = builder.setIeOptions(options);
-    return await builder.build();
+    return options;
   }
 
   async dispose() {
     await this.driver.quit();
   }
 
-  async navigateToPage(url) {
+  async navigateToPage(pageObject) {
     const currentUrl = await this.driver.getCurrentUrl();
-    if (currentUrl !== url) {
-      logger.logDebug(`Navigating to page ${url}`);
+    if (currentUrl !== pageObject.url) {
+      logger.logDebug(`Navigating to page ${pageObject.url}`);
       await retry(async () => {
         try {
-          await this.driver.get(url);
+          await this.driver.get(pageObject.url);
         } catch (error) {
           logger.logError(error);
         }

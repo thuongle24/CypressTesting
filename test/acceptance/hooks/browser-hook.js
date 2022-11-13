@@ -1,8 +1,10 @@
 import { Before, After, Status } from "@cucumber/cucumber";
 import { existsSync, mkdirSync } from "fs";
+import { logError, logDebug } from "../../../services/logging-service";
 const config = require("config");
 const rimraf = require("rimraf");
-import { logError, logDebug } from "../../../services/logging-service";
+const pageConstants = require("../../../page-objects/constants");
+const PageConstructor = require("../../../page-objects/PageConstructor");
 
 import Webdriver from "../../../webdriver/WebDriver";
 const TIMEOUT = 60 * 1000;
@@ -11,15 +13,15 @@ Before({ timeout: TIMEOUT, tags: "@browser" }, async function () {
   this.browser = true;
   try {
     this.driver = new Webdriver();
-    //this.pageConstants = pageConstants;
+    this.pageConstructor = new PageConstructor(this.driver);
+    this.pageConstants = pageConstants;
     await this.driver.init();
-    this.navigateToPage = async () => {
-      //const page = this.pageConstructor.constructPage(pageConstant, ...pageParameters);
-      await this.driver.navigateToPage(config.get("baseUrl"));
+    this.navigateToPage = async (pageConstant, ...pageParameters) => {
+      const page = this.pageConstructor.constructPage(pageConstant, ...pageParameters);
+      await this.driver.navigateToPage(page);
       this.currentPage = page;
       return page;
     };
-
   } catch (err) {
     logError(err);
   }

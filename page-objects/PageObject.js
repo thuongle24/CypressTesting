@@ -1,23 +1,10 @@
 const config = require("config");
 
 class PageObject {
-    constructor(driver) {
+    constructor(driver, pageConstructor) {
         this.driver = driver;
+        this.pageConstructor = pageConstructor;
         this.baseUrl= config.get("baseUrl");
     }
-
-    async navigateToPage(url) {
-        const currentUrl = await this.driver.getCurrentUrl();
-        if (currentUrl !== url) {
-          logger.logDebug(`Navigating to page ${url}`);
-          await retry(async () => {
-            try {
-              await this.driver.get(url);
-            } catch (error) {
-              logger.logError(error);
-            }
-          });
-        }
-      }
 }   
 module.exports = PageObject;
