@@ -71,4 +71,4 @@ class WebElement {
         await actions.move({ origin: this.innerWebElement }).perform();
       }
 }
-export default WebElement;
+module.exports= WebElement;

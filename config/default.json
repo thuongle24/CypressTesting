@@ -1,5 +1,6 @@
 {
     "baseUrl": "https://int.autoscout24.ch/de",
+    "apiUrl": "https://int-newapi.autoscout24.ch/public/v4.5",
     "browser": "chrome",
     "runBrowserHeadless": true,
     "defaultCommandTimeout": 30000,
