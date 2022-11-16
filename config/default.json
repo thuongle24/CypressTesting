@@ -1,8 +1,7 @@
 {
-    "baseUrl": "https://int.autoscout24.ch/de",
-    "apiUrl": "https://int-newapi.autoscout24.ch/public/v4.5",
+    "baseUrl": "https://openweathermap.org",
     "browser": "chrome",
-    "runBrowserHeadless": true,
+    "runBrowserHeadless": false,
     "defaultCommandTimeout": 30000,
     "pageLoadTimeout": 90000,
     "requestTimeout": 60000,

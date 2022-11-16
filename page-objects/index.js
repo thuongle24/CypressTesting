@@ -1,6 +1,8 @@
+const Login = require("./pages/LoginPage");
+const Home = require("./pages/HomePage");
 const pageConstants = require("./constants");
-const Login = require("./LoginPage");
 
 module.exports = [
-    { name: pageConstants.LOGIN, page: Login },
+  { name: pageConstants.LOGIN, page: Login },
+  { name: pageConstants.HOME, page: Home },
 ];

@@ -3,15 +3,29 @@ const { Before, After, Status } = require("@cucumber/cucumber");
 const fs = require("fs");
 const config = require("config");
 const rimraf = require("rimraf");
-const PageObject = require("../../../page-objects/PageObject");
-const WebDriver = require("../../../webdriver/WebDriver")
+
+const Webdriver = require("../../../webdriver/WebDriver");
+const PageConstructor = require("../../../page-objects/PageConstructor");
+const pageConstants = require("../../../page-objects/constants");
 const logger = require("../../../services/logging-service");
+
 const TIMEOUT = 60 * 1000;
 
 Before({ timeout: TIMEOUT, tags: "@browser" }, async function () {
+  this.browser = true;
   try {
-    this.driver = new WebDriver();
-    this.driver.init();
+    this.driver = new Webdriver();
+    this.pageConstructor = new PageConstructor(this.driver);
+    this.pageConstants = pageConstants;
+    await this.driver.init();
+
+    // Some useful utility methods. If this gets too much, probably will want to move them
+    this.navigateToPage = async (pageConstant, ...pageParameters) => {
+      const page = this.pageConstructor.constructPage(pageConstant, ...pageParameters);
+      await this.driver.navigateToPage(page);
+      this.currentPage = page;
+      return page;
+    };
   } catch (err) {
     logger.logError(err);
   }
