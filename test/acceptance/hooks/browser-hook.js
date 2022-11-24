@@ -23,6 +23,7 @@ Before({ timeout: TIMEOUT, tags: "@browser" }, async function () {
     this.navigateToPage = async (pageConstant, ...pageParameters) => {
       const page = this.pageConstructor.constructPage(pageConstant, ...pageParameters);
       await this.driver.navigateToPage(page);
+      await this.spinner.waitForSpinnerToDisappear();
       this.currentPage = page;
       return page;
     };
