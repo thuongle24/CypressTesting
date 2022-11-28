@@ -1,0 +1,1 @@
+{"version":3,"file":"PageComponent.js","sourceRoot":"","sources":["../../../page-objects/components/PageComponent.js"],"names":[],"mappings":";AAAA,MAAM,aAAa;IACjB,YAAY,MAAM,EAAE,eAAe;QACjC,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,eAAe,GAAG,eAAe,CAAC;IACzC,CAAC;IAED,KAAK,CAAC,WAAW;QACf,OAAO,EAAE,CAAC;IACZ,CAAC;CACF;AAED,MAAM,CAAC,OAAO,GAAG,aAAa,CAAC"}

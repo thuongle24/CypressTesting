@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "acceptance-test": "./node_modules/.bin/cucumber-js --profile acceptance test/acceptance/features",
     "api-test": "./node_modules/.bin/cucumber-js --profile api",
