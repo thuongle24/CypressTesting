@@ -10,8 +10,13 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "acceptance-test": "./node_modules/.bin/cucumber-js --profile acceptance test/acceptance/step_definitions",
-    "api-test": "./node_modules/.bin/cucumber-js --profile api"
+    "acceptance-test": "./node_modules/.bin/cucumber-js --profile acceptance test/acceptance/features",
+    "api-test": "./node_modules/.bin/cucumber-js --profile api",
+    "lint": "eslint ./ --ext .js,.ts",
+    "gherkin-lint": "gherkin-lint",
+    "prettier": "prettier --config .prettierrc --write \"**/**/**.{js,ts}\"",
+    "acceptance-test-report": "node_modules/.bin/cucumber-junit > acceptanceResults.xml",
+    "api-test-report": "node_modules/.bin/cucumber-junit > apiResults.xml"
   },
   "dependencies": {
     "@cucumber/cucumber": "^8.7.0",
@@ -50,6 +55,7 @@
     "@typescript-eslint/parser": "^5.42.1",
     "cucumber-junit": "^1.7.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "mailosaur": "^8.5.0",
     "prettier": "^2.7.1",
     "ts-jest": "^29.0.3"
   }

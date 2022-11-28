@@ -21,16 +21,7 @@ class WebElement {
   }
 
   async click() {
-    let success = false;
-    await retry(async () => {
-      try {
-        await this.innerWebElement.click();
-        success = true;
-      } catch (err) {
-        // No need to do anything here
-      }
-      expect(success).toBe(true);
-    });
+    await this.innerWebElement.click();
   }
 
   async findElement(cssSelector) {

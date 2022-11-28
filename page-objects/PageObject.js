@@ -1,11 +1,13 @@
 const config = require("config");
+const Spinner = require("../page-objects/components/spinner");
 
 class PageObject {
-  constructor(driver, pageConstructor, url = "", urlPrefix = true) {
+  constructor(driver, pageConstructor, url = "") {
     this.baseUrl = config.get("baseUrl");
     this.driver = driver;
     this.pageConstructor = pageConstructor;
     this.url = `${this.baseUrl}/${url}`;
+    this.spinner = new Spinner(this.driver, this.pageConstructor);
   }
 
   async getPageData() {

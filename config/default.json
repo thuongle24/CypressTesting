@@ -2,23 +2,21 @@
     "baseUrl": "https://openweathermap.org",
     "browser": "chrome",
     "runBrowserHeadless": false,
+    "skipPendingTests": true,
+    "skipBugRaisedTests": true,
     "defaultCommandTimeout": 30000,
     "pageLoadTimeout": 90000,
     "requestTimeout": 60000,
     "responseTimeout": 60000,
     "logLevel": "info",
     "env": {
-      "webAppUrl": "webapp.autoscout24.ch",
-      "apiUrl": "https://int-webapp.autoscout24.ch/dev"
+      "apiUrl": "https://api.openweathermap.org"
     },
     "personas": {
-        "dealer": {
-          "email": "kyc.admin@ripjar.com",
-          "password": ""
-        },
-        "guest": {
-          "email": "kyc.admin@ripjar.com",
-          "password": ""
+        "account1": {
+          "email": "contain-lonely@nsqhcbys.mailosaur.net",
+          "password": "One11!!1",
+          "apiKey": "08535b17cefac25117e4e534c995d64a"
         }
     },
     "driverTimeout": 5000,
@@ -32,9 +30,12 @@
     "retryIntervalMs": 1000,
     "browserDownloadDirectory": "downloads",
     "parallelism": {
-        "acceptance": 1,
+        "acceptance": 4,
         "api": 5
     },
-    "cleanup": true
+    "cleanup": true,
+    "functionality": {
+      "search": true
+    }
   }
   

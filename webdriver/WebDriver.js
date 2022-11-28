@@ -376,8 +376,34 @@ class SeleniumWebdriver {
       : "";
   }
 
-  async waitForPageLoadCompletely() {
-    //expect(this.driver.executeScript(`return document.readyState`)).toEqual("complete");
+  async isElementVisible(cssSelector) {
+    const element = await this.findElements(cssSelector);
+    return element.length > 0;
+  }
+
+  async isElementNotVisible(cssSelector) {
+    const element = await this.findElements(cssSelector);
+    return element.length === 0;
+  }
+
+  async acceptAlert() {
+    try {
+      await this.driver.wait(until.alertIsPresent());
+      const alert = await this.driver.switchTo().alert();
+      await alert.accept();
+    } catch (err) {
+      //do nothing here
+    }
+  }
+
+  async dismissAlert() {
+    try {
+      await this.driver.wait(until.alertIsPresent());
+      const alert = await this.driver.switchTo().alert();
+      await alert.dismiss();
+    } catch (err) {
+      //do nothing here
+    }
   }
 }
 
