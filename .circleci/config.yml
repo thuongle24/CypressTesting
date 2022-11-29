@@ -24,13 +24,13 @@ jobs:
             - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
           name: install jre
-          command: apt-get install default-jre
+          command: sudo apt-get install default-jre
       - run:
           name: fix install
-          command: apt-get -f install
+          command: sudo apt-get -f install
       - run:
           name: install chrome browser
-          command: apt-get install chromium-browser
+          command: sudo apt-get install chromium-browser
       - run:
           name: install packages
           command: npm install
