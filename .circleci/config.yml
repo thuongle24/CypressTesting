@@ -22,9 +22,11 @@ jobs:
           # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
           keys:
             - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
+      -run:
+          name: update the package index
+          command: sudo apt update
       - run:
           name: install jre
-          command: sudo apt update
           command: sudo apt-get install default-jre
       - run:
           name: fix install
