@@ -1,5 +1,5 @@
 const config = require("config");
-const Spinner = require("../page-objects/components/spinner");
+const Spinner = require("./components/Spinner");
 
 class PageObject {
   constructor(driver, pageConstructor, url = "") {
