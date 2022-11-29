@@ -24,6 +24,9 @@ jobs:
             - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
           name: install jre
+          command: sudo apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main'
+          command: sudo apt-get -y update
+          command: sudo apt-get -y upgrade
           command: sudo apt-get install default-jre
       - run:
           name: fix install
