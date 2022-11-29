@@ -1,7 +1,7 @@
 {
     "baseUrl": "https://openweathermap.org",
     "browser": "chrome",
-    "runBrowserHeadless": false,
+    "runBrowserHeadless": true,
     "skipPendingTests": true,
     "skipBugRaisedTests": true,
     "defaultCommandTimeout": 30000,
